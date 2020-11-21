@@ -16,8 +16,16 @@ const imagesArray = [
 const imageContainer = document.querySelector('.img-container')
 const btns = document.querySelectorAll('.button')
 const parentContainer = document.querySelector('.container')
+const input = document.querySelector('.searchbar');
 window.addEventListener('DOMContentLoaded', displayItems(imagesArray));
 
+input.addEventListener('input',(e)=>{
+  const imgCategory = imagesArray.filter(function(item){
+      if(input.value === item.type){
+        console.log(123)
+      }
+  })
+})
 // Event Listeners
 btns.forEach(function (btn) {
   btn.addEventListener('click', function (e) {
@@ -29,7 +37,7 @@ btns.forEach(function (btn) {
         return img;
       }
     });
-    if(name === 'all'){
+    if(e.currentTarget.dataset.name === 'all'){
         displayItems(imagesArray);
     }else{
       displayItems(imgCategory);
